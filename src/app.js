@@ -16,6 +16,8 @@ function createApp() {
   // This is needed to be able to use req.ip or req.secure
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
+  // add status monitor
+  app.use(require('express-status-monitor')());
 
   if (config.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
