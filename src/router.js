@@ -9,6 +9,11 @@ const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./ut
 function createRouter() {
   const router = express.Router();
 
+  router.get('/ping', (req, res, next) => {
+    res.sendStatus(200);
+    return next();
+  });
+
   if (!_.isEmpty(config.API_TOKENS)) {
     logger.info('x-api-key authentication required');
 
